@@ -50,4 +50,4 @@ public class Appointment {
 	
 	
 	
-}// end
+}// end of appointment
