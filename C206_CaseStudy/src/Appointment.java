@@ -1,33 +1,32 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class Appointment {
 
-	private LocalDate appointDate;
-	private LocalTime appointTime;
+	private String appointDate;
+	private String appointTime;
 	private String designerName;
 	private String premiseAddress;
+	private String custName;
 	
-	public Appointment(LocalDate appointDate, LocalTime appointTime, String designerName, String premiseAddress) {
+	public Appointment(String appointDate, String appointTime, String designerName, String premiseAddress, String custName) {
 		this.appointDate = appointDate;
 		this.appointTime = appointTime;
 		this.designerName = designerName;
 		this.premiseAddress = premiseAddress;
+		this.custName = custName;
 	}
 
-	public LocalDate getAppointDate() {
+	public String getAppointDate() {
 		return appointDate;
 	}
 
-	public void setAppointDate(LocalDate appointDate) {
+	public void setAppointDate(String appointDate) {
 		this.appointDate = appointDate;
 	}
 
-	public LocalTime getAppointTime() {
+	public String getAppointTime() {
 		return appointTime;
 	}
 
-	public void setAppointTime(LocalTime appointTime) {
+	public void setAppointTime(String appointTime) {
 		this.appointTime = appointTime;
 	}
 
@@ -46,7 +45,16 @@ public class Appointment {
 	public void setPremiseAddress(String premiseAddress) {
 		this.premiseAddress = premiseAddress;
 	}
-	
+
+	public String getCustName() {
+		return custName;
+	}
+
+	public void setCustName(String custName) {
+		this.custName = custName;
+	}
+
+
 	
 	
 	
