@@ -79,7 +79,7 @@ public class MainApp {
 					System.out.println("Login Successful, Welcome " + accountList.get(1).getName());
 					
 					int custChoices= -1;
-					while(custChoices != 4)
+					while(custChoices != 7)
 					{
 						designerMenu();
 						custChoices = Helper.readInt("Enter Choice > ");
@@ -223,10 +223,12 @@ public class MainApp {
 			System.out.println("WELCOME TO Renovation ACE");
 			System.out.println("1. Manage Customer");
 			System.out.println("2. Manage Package");
-			System.out.println("3. Manage Request for Quotation");
-			System.out.println("4. Manage Quotation");
-			System.out.println("5. Manage Appointment");
-			System.out.println("6. Quit ");
+			System.out.println("3. View Package");
+			System.out.println("4. Delete Package");
+			System.out.println("5. Manage Request for Quotation");
+			System.out.println("6. Manage Quotation");
+			System.out.println("7. Manage Appointment");
+			System.out.println("8. Quit ");
 			Helper.line(40, "-");
 		}
 		
@@ -237,10 +239,12 @@ public class MainApp {
 			System.out.println("WELCOME TO Renovation ACE");
 			System.out.println("1. Manage Customer");
 			System.out.println("2. Manage Package");
-			System.out.println("3. Manage Request for Quotation");
-			System.out.println("4. Manage Quotation");
-			System.out.println("5. Manage Appointment");
-			System.out.println("6. Quit ");
+			System.out.println("3. View Package");
+			System.out.println("4. Delete Package");
+			System.out.println("5. Manage Request for Quotation");
+			System.out.println("6. Manage Quotation");
+			System.out.println("7. Manage Appointment");
+			System.out.println("8. Quit ");
 			Helper.line(40, "-");
 		}
 		
@@ -283,6 +287,8 @@ public class MainApp {
 		
 		private static void deletePackage (ArrayList<Package> packageList) 
 		{
+			int deletePackageCode = Helper.readInt("Enter Package Code > ");
+			packageList.remove(deletePackageCode); 
 			
 		}
 		private static void addAppointment(ArrayList<Appointment> appointmentList) 
