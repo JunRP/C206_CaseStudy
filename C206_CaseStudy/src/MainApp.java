@@ -23,10 +23,10 @@ public class MainApp {
 		
 		
 		int option = -1;
-
+		mainMenu();
 		while (option != 3) 
 		{
-			mainMenu();
+			
 			option = Helper.readInt("Enter choice > ");
 			//LOGINNNNNNNNNNNNNNNNN
 			if (option == 1) 
@@ -77,7 +77,49 @@ public class MainApp {
 				if(typeUser.equals(accountList.get(1).getName()))
 				{
 					System.out.println("Login Successful, Welcome " + accountList.get(1).getName());
-					designerMenu();
+					
+					int custChoices= -1;
+					while(custChoices != 4)
+					{
+						designerMenu();
+						custChoices = Helper.readInt("Enter Choice > ");
+						if(custChoices == 1)
+						{
+							//Manage customer
+						}
+						else if(custChoices == 2)
+						{
+							//manage package
+							addPackageInfo (packageList);
+						}
+						else if(custChoices == 3)
+						{
+							//view package
+							viewPackageInfo(packageList);
+						}
+						else if(custChoices == 4)
+						{
+							//delete package
+							deletePackage (packageList);
+						}
+						else if(custChoices == 5)
+						{
+							//request Quotation
+						}
+						else if(custChoices == 6)
+						{
+							//request Appointment
+						}
+						else if(custChoices == 7)
+						{
+							System.out.println("Thank you for using Renovation ACE's services!");
+						}
+						else 
+						{
+							System.out.println("Invalid option!");
+						}
+					
+					}
 				}
 				
 				//admin login
@@ -227,6 +269,22 @@ public class MainApp {
 			System.out.println(views);
 		}
 		
+		private static void addPackageInfo (ArrayList<Package> packageList) 
+		{
+			int addPackageCode = Helper.readInt("Enter Package Code > ");
+			String addPackageDescription = Helper.readString("Enter Package Description > ");
+			String addPackageStart = Helper.readString("Enter Package Description > ");
+			String addPackageEnd = Helper.readString("Enter Package Description > ");
+			double addPackageAmount = Helper.readDouble("Enter Package Amount > ");
+			
+			packageList.add(new Package (addPackageCode , addPackageDescription , addPackageStart , addPackageEnd , addPackageAmount));
+			System.out.println("Added successfully");
+		}
+		
+		private static void deletePackage (ArrayList<Package> packageList) 
+		{
+			
+		}
 		private static void addAppointment(ArrayList<Appointment> appointmentList) 
 		{
 			String addAppointDate = Helper.readString("Enter Appointment Date > ");
@@ -240,5 +298,6 @@ public class MainApp {
 			
 		}
 		
+	
 		
 }
