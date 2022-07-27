@@ -277,8 +277,8 @@ public class MainApp {
 		{
 			int addPackageCode = Helper.readInt("Enter Package Code > ");
 			String addPackageDescription = Helper.readString("Enter Package Description > ");
-			String addPackageStart = Helper.readString("Enter Package Description > ");
-			String addPackageEnd = Helper.readString("Enter Package Description > ");
+			String addPackageStart = Helper.readString("Enter Package Start Date> ");
+			String addPackageEnd = Helper.readString("Enter Package End Date > ");
 			double addPackageAmount = Helper.readDouble("Enter Package Amount > ");
 			
 			packageList.add(new Package (addPackageCode , addPackageDescription , addPackageStart , addPackageEnd , addPackageAmount));
