@@ -107,7 +107,9 @@ public class C206_CaseStudy {
 						else if(custChoices == 2)
 						{
 							 //Add Quotation
-							addQuotation(quotationList);
+							Quote quote= inputQuotation();
+							C206_CaseStudy.addQuotation(quotationList, quote);
+							System.out.println("quotation added");
 						}
 						else if(custChoices == 3)
 						{
@@ -219,7 +221,23 @@ public class C206_CaseStudy {
 		}
 	}
 		
-		
+//	public static String retrieveAllQuotation(ArrayList<Quote> quotationList) {
+//		String output = "";
+//		
+//		for (int i = 0; i < quotationList.size(); i++) {
+//
+//			output += String.format("%-20d %-20 %-20s %-20s %-20.2f $-20s $-20s %-15.2f\n", quotationList.get(i).getRequestID(), quotationList.get(i).getQuotation_ID(), 					quotationList.get(i).getRenovationCategory(),
+//					
+//					quotationList.get(i).getQuotation_ID(), 
+//					quotationList.get(i).getRenovationCategory(),
+//					quotationList.get(i).getDescriptionOfItem(),
+//					quotationList.get(i).getItemPrice();
+//					
+//		
+//		}
+//		return output;
+//		
+//	}
 
 		
 	public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
@@ -449,8 +467,10 @@ public class C206_CaseStudy {
 			System.out.println(views);
 		}
 		
-		public static void addQuotation(ArrayList<Quote> quotationList)
-		{
+		public static Quote inputQuotation() {
+			
+			Quote quote =null;
+			
 			int addRequestID = Helper.readInt("Enter RequestID > ");
 			int addQuotationID = Helper.readInt("Enter QuotationID > ");
 			String addRenovationC = Helper.readString("Enter Renovation Category > ");
@@ -460,7 +480,17 @@ public class C206_CaseStudy {
 			String addStartDate = Helper.readString("Enter Start Date > ");
 			double addQuoteAmount = Helper.readDouble("Enter Quote Amount > ");
 			
-			quotationList.add(new Quote(addRequestID, addQuotationID, addRenovationC, addDescriptionItem, addItemPrice, addDesignerName, addStartDate, addQuoteAmount));
+			quote = new Quote(addRequestID, addQuotationID, addRenovationC, addDescriptionItem, addItemPrice, addDesignerName, addStartDate, addQuoteAmount);
+			return quote;
+			
+		}
+		
+		public static void addQuotation(ArrayList<Quote> quotationList, Quote quote)
+		{
+
+			quotationList.add(quote);
+			System.out.println("Added Successfully");
+			
 		}
 	
 		public static void deleteQuotation(ArrayList<Quote> quotationList)

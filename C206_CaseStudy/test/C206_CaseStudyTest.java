@@ -23,13 +23,17 @@ public class C206_CaseStudyTest {
 	private Appointment App1;
 	private Appointment App2;
 	private Appointment App3;
-	private Appointment App4;
-	private Appointment App5;
+
+	//Quotation
+	private Quote quote1;
+	private Quote quote2;
+	private Quote quote3;
 	
 	//ArrayList
 	private ArrayList<Package> packageList;
 	private ArrayList<User> accountList;
 	private ArrayList<Appointment> appointmentList;
+	private ArrayList<Quote> quotationList;
 	
 	public C206_CaseStudyTest(){
 		super();
@@ -54,26 +58,73 @@ public class C206_CaseStudyTest {
 		App1 = new Appointment ("22/12/2022","11:59AM","Bob","Hougang Road 333","Lament");
 		App2 = new Appointment ("5/1/2023","13:00PM","Bob","Jurong West St 55","Lament");
 		App3 = new Appointment ("18/2/2023","10:30AM","Bob","Punggol Ave 7","Lament");
-//		App4 = new Appointment ("10/5/2023","15:25PM","Bob","Lakeside Rd","Lament");
-//		App5 = new Appointment ("29/2/2024","8:30AM","Bob","Pasir Ris Ave 2","Lament");
+		
+		//Quotation
+		quote1 = new Quote (1, 1 , "Kitchen", "Tiles", 2500, "Bob", "22/12/2023", 3000);
+		quote2 = new Quote (1 ,2 , "LivingRoom and Bedroom", "Tiles and Windows", 5000, "Bob", "13/2/2022", 6000);
+		quote3 = new Quote (2 ,1 , "Kitchen", "Windows" , 1000, "Bob", "21/4/2022", 1300);
+		
+
 		
 		//ArrayList
 		accountList = new ArrayList<User>();
 		packageList = new ArrayList<Package>();
 		appointmentList = new ArrayList<Appointment>();
+		quotationList = new ArrayList<Quote>();
 		
-		
-//		appointmentList.add(App1);
-//		appointmentList.add(App2);
-//		appointmentList.add(App3);
-//		appointmentList.add(App4);
-//		appointmentList.add(App5);
-
-		
+	
 	}
 	
+	//========================================================================Quotation====================================================================================
+	
 	@Test
-	//Appointment
+	public void testAddQuotation() {
+		
+		// Appointment list is not null, so that can add a new appointment - boundary
+		assertNotNull("Test if there is valid Quotation arraylist to add to", quotationList);
+				
+		//Given an empty list, after adding 1 appointment, the size of the list is 1 - normal
+		//The appointment just added is as same as the first item of the list	
+		C206_CaseStudy.addQuotation(quotationList, quote1);
+		assertEquals("Test that Quotation arraylist size is 1", 1, quotationList.size());
+			
+		//The item just added is as same as the first item of the list
+		assertSame("Test that quotation is added", quote1, quotationList.get(0));
+				
+		//Add another item. test The size of the list is 2?
+		C206_CaseStudy.addQuotation(quotationList, quote2);
+		assertEquals("Test that Quotation arraylist size is 2?", 2, quotationList.size());
+		assertSame("Test that Quotation is added same as 2nd item of the list?", quote2, quotationList.get(1));
+			
+	}
+//	
+//	public void testViewQuotationt() {
+//		
+//		//test if the expected output string same as the list of appointment retrieved from the SourceCentre
+//		//test if the list of appointment retrieved from the SourceCentre is empty
+//		C206_CaseStudy.addQuotation(quotationList, quote1);
+//		C206_CaseStudy.addQuotation(quotationList, quote2);
+//		C206_CaseStudy.addQuotation(quotationList, quote3);
+//		
+//		String allQuotation= C206_CaseStudy.retrieveAllQuotation(quotationList);
+//		String testOutput = "";
+//	
+//				
+//		//test if the expected output string same as the list of chromebooks retrieved from the SourceCentre
+//		allQuotation= C206_CaseStudy.retrieveAllQuotation(quotationList);
+//
+//		testOutput = String.format("%-20s %-20s %-20s %-20s %-15s\n","22/12/2022","11:59AM","Bob","Hougang Road 333","Lament");
+//		testOutput += String.format("%-20s %-20s %-20s %-20s %-15s\n","5/1/2023","13:00PM","Bob","Jurong West St 55","Lament");
+//		testOutput += String.format("%-20s %-20s %-20s %-20s %-15s\n","18/2/2023","10:30AM","Bob","Punggol Ave 7","Lament");
+//		
+//		assertEquals("Check that ViewAllAppointmentList", testOutput, allQuotation);
+//				
+//	}
+	
+	
+	
+	@Test
+	//======================================================================Appointment===================================================================================
 	public void testAddAppointment() {
 		
 		// Appointment list is not null, so that can add a new appointment - boundary
@@ -96,8 +147,8 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testViewAppointment() {
 		
-		//test if the expected output string same as the list of chromebooks retrieved from the SourceCentre
-		//test if the list of camcorders retrieved from the SourceCentre is empty
+		//test if the expected output string same as the list of appointment retrieved from the SourceCentre
+		//test if the list of appointment retrieved from the SourceCentre is empty
 		C206_CaseStudy.addAppointment(appointmentList, App1);
 		C206_CaseStudy.addAppointment(appointmentList, App2);
 		C206_CaseStudy.addAppointment(appointmentList, App3);
@@ -145,7 +196,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	
+	//===================================================================================================================================================================
 
 	@After
 	public void tearDown() throws Exception {
