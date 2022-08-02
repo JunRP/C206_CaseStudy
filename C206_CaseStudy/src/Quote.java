@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 
 public class Quote {
 	private int RequestID;
@@ -7,13 +6,21 @@ public class Quote {
 	private String DescriptionOfItem;
 	private double ItemPrice;
 	private String DesignerName;
-	private LocalDate StartDate;
+	private String StartDate;
 	private double QuoteAmount;
 	
 	
-	public Quote(String descriptionOfItem, double itemPrice) {
+
+	public Quote(int requestID, int quotation_ID, String renovationCategory, String descriptionOfItem, double itemPrice,
+			String designerName, String startDate, double quoteAmount) {
+		RequestID = requestID;
+		Quotation_ID = quotation_ID;
+		RenovationCategory = renovationCategory;
 		DescriptionOfItem = descriptionOfItem;
 		ItemPrice = itemPrice;
+		DesignerName = designerName;
+		StartDate = startDate;
+		QuoteAmount = quoteAmount;
 	}
 
 	public int getRequestID() {
@@ -64,11 +71,11 @@ public class Quote {
 		DesignerName = designerName;
 	}
 
-	public LocalDate getStartDate() {
+	public String getStartDate() {
 		return StartDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(String startDate) {
 		StartDate = startDate;
 	}
 
