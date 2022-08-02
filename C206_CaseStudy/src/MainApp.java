@@ -21,8 +21,8 @@ public class MainApp {
 		
 
 		appointmentList.add(new Appointment ("22/12/2022","11:59AM","Bob","Hougang Road 333","Lament"));
-		appointmentList.add(new Appointment ("5/1/2023","13:00PM","John","Jurong West St 55","Lament"));
-		appointmentList.add(new Appointment ("18/2/2023","10:30AM","Steve","Punggol Ave 7","Lament"));
+		appointmentList.add(new Appointment ("5/1/2023","13:00PM","Bob","Jurong West St 55","Lament"));
+		appointmentList.add(new Appointment ("18/2/2023","10:30AM","Bob","Punggol Ave 7","Lament"));
 		
 		quotationList.add(new Quote (1, 1 , "Kitchen", "Tiles", 2500, "Bob", "22/12/2023", 3000));
 		quotationList.add(new Quote (1 ,2 , "LivingRoom and Bedroom", "Tiles and Windows", 5000, "Bob", "13/2/2022", 6000));
