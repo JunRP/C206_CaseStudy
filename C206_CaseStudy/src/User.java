@@ -1,5 +1,5 @@
 public class User {
-	
+	//Coded by Joshua
 	
 	private String name;
 	private String password;

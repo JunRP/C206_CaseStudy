@@ -1,4 +1,5 @@
 public class Quote {
+	//Coded by martin
 	private int RequestID;
 	private int Quotation_ID;
 	private String RenovationCategory;

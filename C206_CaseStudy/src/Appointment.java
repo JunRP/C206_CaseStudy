@@ -1,5 +1,5 @@
 public class Appointment {
-
+//coded by Jun Han
 	private String appointDate;
 	private String appointTime;
 	private String designerName;
