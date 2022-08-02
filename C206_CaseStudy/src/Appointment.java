@@ -50,4 +50,8 @@ public class Appointment {
 	
 	
 	
+<<<<<<< HEAD
 }// end of appointment
+=======
+}// end of appointment
+>>>>>>> branch 'master' of https://github.com/JunRP/C206_CaseStudy.git
