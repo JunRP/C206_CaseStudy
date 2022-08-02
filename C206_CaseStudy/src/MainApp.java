@@ -5,25 +5,32 @@ public class MainApp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//Denise
 		ArrayList<Package> packageList = new ArrayList <Package>();
+		//Joshua
 		ArrayList<User> accountList = new ArrayList <User>();
+		//Jun Han
 		ArrayList<Appointment> appointmentList = new ArrayList <Appointment>();
+		//Martin
 		ArrayList<Quote> quotationList = new ArrayList <Quote>();
 
+		//Joshua
 		accountList.add(new User ("Alice", "Alice", "AdminLife123@gmail.com", "Confirmed", "Admin"));
 		accountList.add(new User ("Bob", "Bob", "Bobbiedesigns12@gmail.com", "Confirmed", "Designer"));
 		accountList.add(new User ("Lament", "Lament", "LamentArtistic@gmail.com", "New", "Customer"));
 		
+		//Denise
 		packageList.add(new Package (1,"Whole Place", "20/7/2022","1/2/2023", 10000.00));
 		packageList.add(new Package (2,"room", "20/7/2022","20/8/2028", 3000.00));
 		packageList.add(new Package (3,"kitchen", "20/7/2022","12/5/2025", 5000.00));
 		packageList.add(new Package (4,"toilet", "20/7/2022","10/2/2024", 4000.00));
 		
-
+		//Jun Han
 		appointmentList.add(new Appointment ("22/12/2022","11:59AM","Bob","Hougang Road 333","Lament"));
 		appointmentList.add(new Appointment ("5/1/2023","13:00PM","Bob","Jurong West St 55","Lament"));
 		appointmentList.add(new Appointment ("18/2/2023","10:30AM","Bob","Punggol Ave 7","Lament"));
 		
+		//Martin
 		quotationList.add(new Quote (1, 1 , "Kitchen", "Tiles", 2500, "Bob", "22/12/2023", 3000));
 		quotationList.add(new Quote (1 ,2 , "LivingRoom and Bedroom", "Tiles and Windows", 5000, "Bob", "13/2/2022", 6000));
 		quotationList.add(new Quote (2 ,1 , "Kitchen", "Windows" , 1000, "Bob", "21/4/2022", 1300));
@@ -56,22 +63,22 @@ public class MainApp {
 							customerMenu();
 							custChoices = Helper.readInt("Enter Choice > ");
 							if(custChoices == 1)
-							{   //view package
+							{   //view package - Denise
 								viewPackageInfo(packageList);
 							}
 							else if(custChoices == 2)
-							{   //view appointment
+							{   //view appointment - Jun Han
 								viewAppointment(appointmentList);
 							}
 							else if(custChoices == 3)
-							{   //add appointment
+							{   //add appointment - Jun Han
 								Appointment App= inputAppointment();
 								MainApp.addAppointment(appointmentList, App);
 								System.out.println("Appointment added");
 							}
 							else if(custChoices == 4)
 							{
-								//delete appointment
+								//delete appointment - Jun Han
 								deleteAppointment(appointmentList);
 							}
 							else if(custChoices == 5)
@@ -89,7 +96,7 @@ public class MainApp {
 				
 				
 				
-				//Designer Log in
+				//Designer Log in - Martin
 				if(typeUser.equals(accountList.get(1).getName()) && typePassword.equals("Bob"))
 				{
 					System.out.println("Login Successful, Welcome " + accountList.get(1).getName());
@@ -101,17 +108,17 @@ public class MainApp {
 						custChoices = Helper.readInt("Enter Choice > ");
 						if(custChoices == 1)
 						{
-							//View Quotation
+							//View Quotation - Martin
 							viewQuotation(quotationList);
 						}
 						else if(custChoices == 2)
 						{
-							 //Add Quotation
+							 //Add Quotation - Martin
 							addQuotation(quotationList);
 						}
 						else if(custChoices == 3)
 						{
-							//Delete Quotation
+							//Delete Quotation - Martin
 							deleteQuotation(quotationList);
 						}
 						else if(custChoices == 4)
@@ -137,49 +144,49 @@ public class MainApp {
 						custChoices = Helper.readInt("Enter Choice > ");
 						if(custChoices == 1)
 						{
-							//Manage User Status
+							//Manage User Status - Joshua
 							ManageUserDetails(accountList);
 						}
 						else if(custChoices == 2)
 						{
-							//View User
+							//View User - Joshua
 							ViewAcc(accountList);
 						}
 						else if(custChoices == 3)
 						{
-							//Delete User
+							//Delete User - Joshua
 							DeleteAcc(accountList);
 						}
 						else if(custChoices == 4)
 						{
-							//Add Appointment
+							//Add Appointment - Jun Han
 							Appointment App= inputAppointment();
 							MainApp.addAppointment(appointmentList, App);
 							System.out.println("Appointment added");
 						}
 						else if(custChoices == 5)
 						{
-							//view appointment
+							//view appointment -Jun Han 
 							viewAppointment(appointmentList);
 						}
 						else if(custChoices == 6)
 						{
-							//delete appointment
+							//delete appointment -Jun Han
 							deleteAppointment(appointmentList);
 						}
 						else if(custChoices == 7)
 						{
-							//view package
+							//view package - Denise 
 							viewPackageInfo(packageList);
 						}
 						else if(custChoices == 8)
 						{
-							//add package
+							//add package - Denise
 							addPackageInfo (packageList);
 						}
 						else if(custChoices == 9)
 						{
-							//delete package
+							//delete package -Denise
 							deletePackage (packageList);
 						}
 						else if(custChoices == 10)
@@ -201,7 +208,7 @@ public class MainApp {
 			}
 			
 			
-			//REGISTERRRRRRRRRRRRRRRRRR
+			//REGISTERRRRRRRRRRRRRRRRRR - Joshua
 			else if(option == 2)
 			{
 				Register(accountList);
@@ -232,7 +239,7 @@ public class MainApp {
 
 
 
-
+		//Jun Han
 		private static void viewAppointment(ArrayList<Appointment> appointmentList) 
 		{
 		// TODO Auto-generated method stub
@@ -264,7 +271,7 @@ public class MainApp {
 
 
 
-
+		//Joshua
 		private static void mainMenu() {
 			//Write code here for the mainMenu method.
 			Helper.line(40, "-");
@@ -275,6 +282,7 @@ public class MainApp {
 			Helper.line(40, "-");
 		}
 		
+		//Jun Han
 		private static void customerMenu()
 		{
 			//customers main menu
@@ -288,6 +296,7 @@ public class MainApp {
 			Helper.line(40, "-");
 		}
 		
+		//Denise
 		private static void adminMenu()
 		{
 			//admin main menu
@@ -306,6 +315,7 @@ public class MainApp {
 			Helper.line(40, "-");
 		}
 		
+		//Martin
 		private static void designerMenu()
 		{
 			//Designer menu
@@ -318,6 +328,7 @@ public class MainApp {
 			Helper.line(40, "-");
 		}
 		
+		//Joshua
 		private static void Register(ArrayList<User> accountList) 
 		{
 		// TODO Auto-generated method stub
@@ -330,6 +341,7 @@ public class MainApp {
 			System.out.println("Thank you for registering!");
 			accountList.add(new User (regName, regPassword, regEmail, regStatus, regRoles));
 		}
+		//Joshua
 		private static void ViewAcc(ArrayList<User> accountList)
 		{
 			String views = String.format("%-30s %-10s %-30s %-10s %-10s\n", "Name", "Password", "Email", "Status", "Roles");
@@ -338,7 +350,7 @@ public class MainApp {
 			}
 			System.out.println(views);
 		}
-		
+		//Joshua
 		private static void ManageUserDetails(ArrayList<User> accountList)
 		{
 			ViewAcc(accountList);
@@ -350,6 +362,7 @@ public class MainApp {
 				}
 			}
 		}
+		//Joshua
 		private static void DeleteAcc(ArrayList<User> accountList)
 		{
 			String deleteByName = Helper.readString("Enter Name to remove account > ");
@@ -359,7 +372,7 @@ public class MainApp {
 				}
 			}
 		}
-		
+		//Denise
 		private static void viewPackageInfo(ArrayList<Package> packageList) 
 		{
 			
@@ -370,7 +383,7 @@ public class MainApp {
 			}
 			System.out.println(views);
 		}
-		
+		//Denise
 		private static void addPackageInfo (ArrayList<Package> packageList) 
 		{
 			int addPackageCode = Helper.readInt("Enter Package Code > ");
@@ -382,17 +395,36 @@ public class MainApp {
 			packageList.add(new Package (addPackageCode , addPackageDescription , addPackageStart , addPackageEnd , addPackageAmount));
 			System.out.println("Added successfully");
 		}
-		
+		//Denise
 		private static void deletePackage (ArrayList<Package> packageList) 
 		{
 			viewPackageInfo(packageList);
-			
 			int deletePackageCode = Helper.readInt("Enter Package Code > ");
-			packageList.remove(deletePackageCode-1); 
-			System.out.println("Deleted");
+			boolean checker = false;
+			if (packageList.size()+1 <deletePackageCode)
+			{
+				for (int i = 0; i <= packageList.size(); i++) 
+				{
+					if (packageList.get(i).getCode() == deletePackageCode)
+					{
+					packageList.remove(i);
+					checker = true;
+					break;
+					}
+				}
+			}
+			if (checker == true) 
+			{
+				System.out.println("Deleted");
+			}
+			else
+			{
+				System.out.println("Package Code not found!");
+			}
+			
 			
 		}
-		
+		//Jun Han
 		public static void deleteAppointment(ArrayList<Appointment> appointmentList)
 		{
 			viewAppointment(appointmentList);
@@ -407,7 +439,7 @@ public class MainApp {
 				}
 			}
 		}
-		
+		//Jun Han
 		public static Appointment inputAppointment(){
 			
 			Appointment App=null;
@@ -423,7 +455,7 @@ public class MainApp {
 			
 		}
 		
-		
+		//Jun Han
 		public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment App) 
 		{
 
@@ -431,7 +463,7 @@ public class MainApp {
 					System.out.println("Added successfully");
 			
 		}
-		
+		//Martin
 		public static void viewQuotation(ArrayList<Quote> quotationList)
 		{
 			String views = String.format("%-10s %-10s %-25s %-25s %-10s %-10s %-10s %-10s\n", "Request ID","Quotation ID","Renovation Category","Description of Item","Item Price","Designer Name", "Start Date", "Quote Amount");
@@ -442,6 +474,7 @@ public class MainApp {
 			System.out.println(views);
 		}
 		
+		//Martin
 		public static void addQuotation(ArrayList<Quote> quotationList)
 		{
 			int addRequestID = Helper.readInt("Enter RequestID > ");
@@ -455,7 +488,8 @@ public class MainApp {
 			
 			quotationList.add(new Quote(addRequestID, addQuotationID, addRenovationC, addDescriptionItem, addItemPrice, addDesignerName, addStartDate, addQuoteAmount));
 		}
-	
+		
+		//Martin
 		public static void deleteQuotation(ArrayList<Quote> quotationList)
 		{
 			viewQuotation(quotationList);
