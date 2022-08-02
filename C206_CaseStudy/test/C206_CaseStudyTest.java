@@ -387,14 +387,28 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
+		
+		//User
 		user1 = null;
 		user2 = null;
 		user3 = null;
 		
+		//Package
 		p1 = null;
 		p2 = null;
 		p3 = null;
 		p4 = null;
+		
+		//Quotation
+		quote1 = null;
+		quote2 = null;
+		quote3 = null;
+		
+		//Appointment
+		App1 = null;
+		App2 = null;
+		App3 = null;
+		
 	}
 	
 
