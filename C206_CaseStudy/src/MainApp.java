@@ -291,6 +291,24 @@ public class MainApp {
 			System.out.println("Thank you for registering!");
 			accountList.add(new User (regName, regContactNumber, regEmail, regStatus, regRoles));
 		}
+		private static void ViewAcc(ArrayList<User> accountList)
+		{
+			String views = String.format("%-30s %-10d %-30s %-10s %-10s", "Name", "Contact No.", "Email", "Status", "Roles");
+			for(int i = 0; i < accountList.size(); i++) {
+				views += String.format("%-30s %-10d %-30s %-10s %-10s", accountList.get(i).getName(), accountList.get(i).getContactNumber(), accountList.get(i).getEmailAddress(), accountList.get(i).getStatus(), accountList.get(i).getRole());
+			}
+			System.out.println(views);
+		}
+		private static void DeleteAcc(ArrayList<User> accountList)
+		{
+			String deleteByEmail = Helper.readString("Enter account to remove by email > ");
+			for(int i = 0; i < accountList.size(); i++) {
+				if(accountList.get(i).getEmailAddress().equalsIgnoreCase(deleteByEmail)) {
+					accountList.remove(i);
+				}
+			}
+		}
+		
 		private static void viewPackageInfo(ArrayList<Package> packageList) 
 		{
 			
