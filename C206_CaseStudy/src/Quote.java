@@ -1,4 +1,3 @@
-
 public class Quote {
 	private int RequestID;
 	private int Quotation_ID;
