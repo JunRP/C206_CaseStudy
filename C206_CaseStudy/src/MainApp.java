@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class MainApp {
+	public static String typeUser = "";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -23,16 +24,16 @@ public class MainApp {
 		
 		
 		int option = -1;
-		mainMenu();
 		while (option != 3) 
 		{
+			mainMenu();
 			
 			option = Helper.readInt("Enter choice > ");
 			//LOGINNNNNNNNNNNNNNNNN
 			if (option == 1) 
 			{
 				//asking user to type name
-				String typeUser = Helper.readString("Enter Name > ");
+				typeUser = Helper.readString("Enter Name > ");
 				
 				//customer login
 				for(int i = 2; i < accountList.size();i++)
@@ -41,7 +42,9 @@ public class MainApp {
 					if(typeUser.equals(accountList.get(i).getName()))
 					{
 						System.out.println("Login Successful, Welcome " + accountList.get(i).getName());
+						
 						int custChoices= -1;
+						
 						while(custChoices != 4)
 						{
 							customerMenu();
@@ -79,9 +82,42 @@ public class MainApp {
 					System.out.println("Login Successful, Welcome " + accountList.get(1).getName());
 					
 					int custChoices= -1;
-					while(custChoices != 7)
+					while(custChoices != 4)
 					{
 						designerMenu();
+						custChoices = Helper.readInt("Enter Choice > ");
+						if(custChoices == 1)
+						{
+							//View Quotation
+						}
+						else if(custChoices == 2)
+						{
+							 //Manage Request for Quotation
+						}
+						else if(custChoices == 3)
+						{
+							//Manage Quotation
+						}
+						else if(custChoices == 4)
+						{
+							System.out.println("Thank you for using Renovation ACE's services!");
+						}
+						else 
+						{
+							System.out.println("Invalid option!");
+						}
+					
+					}
+				}
+				
+				//admin login
+				if(typeUser.equals(accountList.get(0).getName())) 
+				{
+					System.out.println("Login Successful, Welcome " + accountList.get(0).getName());
+					int custChoices= -1;
+					while(custChoices !=8)
+					{
+						adminMenu();
 						custChoices = Helper.readInt("Enter Choice > ");
 						if(custChoices == 1)
 						{
@@ -104,13 +140,17 @@ public class MainApp {
 						}
 						else if(custChoices == 5)
 						{
-							//request Quotation
+							//View Appointment
 						}
 						else if(custChoices == 6)
 						{
-							//request Appointment
+							//Manage Appointment
 						}
 						else if(custChoices == 7)
+						{
+							//Delete appointment
+						}
+						else if(custChoices == 8)
 						{
 							System.out.println("Thank you for using Renovation ACE's services!");
 						}
@@ -120,13 +160,6 @@ public class MainApp {
 						}
 					
 					}
-				}
-				
-				//admin login
-				if(typeUser.equals(accountList.get(0).getName())) 
-				{
-					System.out.println("Login Successful, Welcome " + accountList.get(0).getName());
-					adminMenu();
 					
 				}
 				
@@ -174,8 +207,9 @@ public class MainApp {
 			String views = String.format("%-20s %-20s %-20s %-20s %-15s \n", "AppointmentDate","AppointmentTime","Designer Name","Premise Address","Customer Name" );
 			for(int i = 0; i < appointmentList.size(); i++)
 			{	
-				
-				views += String.format("%-20s %-20s %-20s %-20s %-15s \n", appointmentList.get(i).getAppointDate(),appointmentList.get(i).getAppointTime(),appointmentList.get(i).getDesignerName(),appointmentList.get(i).getPremiseAddress(),appointmentList.get(i).getCustName());
+				if(typeUser.equals(appointmentList.get(i).getCustName())) {
+					views += String.format("%-20s %-20s %-20s %-20s %-15s \n", appointmentList.get(i).getAppointDate(),appointmentList.get(i).getAppointTime(),appointmentList.get(i).getDesignerName(),appointmentList.get(i).getPremiseAddress(),appointmentList.get(i).getCustName());
+					}
 			}
 			System.out.println(views);
 		}
@@ -222,12 +256,12 @@ public class MainApp {
 			Helper.line(40, "-");
 			System.out.println("WELCOME TO Renovation ACE");
 			System.out.println("1. Manage Customer");
-			System.out.println("2. Manage Package");
+			System.out.println("2. Add Package");
 			System.out.println("3. View Package");
 			System.out.println("4. Delete Package");
-			System.out.println("5. Manage Request for Quotation");
-			System.out.println("6. Manage Quotation");
-			System.out.println("7. Manage Appointment");
+			System.out.println("5. View Appointment");
+			System.out.println("6. Manage Appointment");
+			System.out.println("7. Delete Appointment");
 			System.out.println("8. Quit ");
 			Helper.line(40, "-");
 		}
@@ -237,14 +271,10 @@ public class MainApp {
 			//Designer menu
 			Helper.line(40, "-");
 			System.out.println("WELCOME TO Renovation ACE");
-			System.out.println("1. Manage Customer");
-			System.out.println("2. Manage Package");
-			System.out.println("3. View Package");
-			System.out.println("4. Delete Package");
-			System.out.println("5. Manage Request for Quotation");
-			System.out.println("6. Manage Quotation");
-			System.out.println("7. Manage Appointment");
-			System.out.println("8. Quit ");
+			System.out.println("1. View Quotation");
+			System.out.println("2. Manage Request for Quotation");
+			System.out.println("3. Manage Quotation");
+			System.out.println("4. Quit ");
 			Helper.line(40, "-");
 		}
 		
@@ -253,12 +283,12 @@ public class MainApp {
 		// TODO Auto-generated method stub
 			//adds user details to arraylist user
 			String regName = Helper.readString("Enter Name > ");
-			String dregContactNumber = Helper.readStringRegEx("Enter your contact details > ", "/^[9|6|8][0-9]{7}$");
+			String dregContactNumber = Helper.readString("Enter your contact details > ");
 			int regContactNumber = Integer.parseInt(dregContactNumber);
 			String regEmail = Helper.readStringRegEx("Enter email > ", "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 			String regStatus = "New";
 			String regRoles = "Customer";
-			
+			System.out.println("Thank you for registering!");
 			accountList.add(new User (regName, regContactNumber, regEmail, regStatus, regRoles));
 		}
 		private static void viewPackageInfo(ArrayList<Package> packageList) 
@@ -267,7 +297,6 @@ public class MainApp {
 			String views = String.format("%-15s %-15s %-10s %-10s %-10s \n", "Code","Description","StartDate","EndDate","Amount" );
 			for(int i = 0; i < packageList.size(); i++)
 			{	
-				
 				views += String.format("%-15d %-15s %-10s %-10s %-10.2f \n", packageList.get(i).getCode(),packageList.get(i).getDescription(),packageList.get(i).getStart(),packageList.get(i).getEnd(),packageList.get(i).getAmount());
 			}
 			System.out.println(views);
@@ -288,7 +317,7 @@ public class MainApp {
 		private static void deletePackage (ArrayList<Package> packageList) 
 		{
 			int deletePackageCode = Helper.readInt("Enter Package Code > ");
-			packageList.remove(deletePackageCode); 
+			packageList.remove(deletePackageCode-1); 
 			
 		}
 		private static void addAppointment(ArrayList<Appointment> appointmentList) 
@@ -299,6 +328,7 @@ public class MainApp {
 			String addPremiseAddress = Helper.readString("Enter Premises Address > ");
 			String addCustName = Helper.readString("Enter Customer Name > ");
 			
+
 			appointmentList.add(new Appointment (addAppointDate, addAppointTime, addDesignerName, addPremiseAddress, addCustName));
 			System.out.println("Added successfully");
 			
