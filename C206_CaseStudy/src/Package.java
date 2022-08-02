@@ -1,6 +1,5 @@
-import java.time.LocalDate;
 public class Package {
-<<<<<<< HEAD
+
 	
 	private String id;
 	private String description;
@@ -10,14 +9,14 @@ public class Package {
 	private String pEndDate;
 	
 	
-=======
-	private String Code;
+	private int Code;
+
 	private String Description;
-	private LocalDate Start;
-	private LocalDate End;
+	private String Start;
+	private String End;
 	private double Amount;
 	
-	public Package(String code, String description, LocalDate start, LocalDate end, double amount) 
+	public Package(int code, String description, String start, String end, double amount) 
 	{
 		Code = code;
 		Description = description;
@@ -25,32 +24,48 @@ public class Package {
 		End = end;
 		Amount = amount;
 	}
->>>>>>> branch 'master' of https://github.com/JunRP/C206_CaseStudy.git
 
-	public void setCode(String code) 
-	{
+
+	public int getCode() {
+		return Code;
+	}
+
+	public void setCode(int code) {
 		Code = code;
 	}
 
-	public void setDescription(String description) 
-	{
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
 		Description = description;
 	}
 
-	public void setStart(LocalDate start) 
-	{
+	public String getStart() {
+		return Start;
+	}
+
+	public void setStart(String start) {
 		Start = start;
 	}
 
-	public void setEnd(LocalDate end) 
-	{
+	public String getEnd() {
+		return End;
+	}
+
+	public void setEnd(String end) {
 		End = end;
 	}
 
-	public void setAmount(double amount) 
-	{
+	public double getAmount() {
+		return Amount;
+	}
+
+	public void setAmount(double amount) {
 		Amount = amount;
 	}
+
 	
 	
 	
