@@ -177,7 +177,9 @@ public class C206_CaseStudy {
 						else if(custChoices == 8)
 						{
 							//add package
-							addPackageInfo (packageList);
+							Package p = inputPackage();
+							C206_CaseStudy.addPackageInfo(packageList, p);
+							System.out.println("Package added");
 						}
 						else if(custChoices == 9)
 						{
@@ -206,7 +208,9 @@ public class C206_CaseStudy {
 			//REGISTERRRRRRRRRRRRRRRRRR
 			else if(option == 2)
 			{
-				Register(accountList);
+				User user = inputRegister();
+				C206_CaseStudy.registerAccount(accountList, user);
+				System.out.println("Registered!");
 			}
 			
 			//QUITSSSSSSSSSSSSSSSSSSSSSSSss
@@ -220,24 +224,46 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+	
+	public static String retrieveAllUser(ArrayList<User> accountList) {
+		String output = "";
 		
-//	public static String retrieveAllQuotation(ArrayList<Quote> quotationList) {
-//		String output = "";
-//		
-//		for (int i = 0; i < quotationList.size(); i++) {
-//
-//			output += String.format("%-20d %-20 %-20s %-20s %-20.2f $-20s $-20s %-15.2f\n", quotationList.get(i).getRequestID(), quotationList.get(i).getQuotation_ID(), 					quotationList.get(i).getRenovationCategory(),
-//					
-//					quotationList.get(i).getQuotation_ID(), 
-//					quotationList.get(i).getRenovationCategory(),
-//					quotationList.get(i).getDescriptionOfItem(),
-//					quotationList.get(i).getItemPrice();
-//					
-//		
-//		}
-//		return output;
-//		
-//	}
+		for (int i = 0; i < accountList.size(); i++) {
+			
+			output += String.format("%-30s %-10s %-30s %-10s %-10s\n",
+					accountList.get(i).getName(),
+					accountList.get(i).getPassword(),
+					accountList.get(i).getEmailAddress(),
+					accountList.get(i).getStatus(),
+					accountList.get(i).getRole());
+		}
+	
+		
+		return output;
+		
+	}
+		
+	public static String retrieveAllQuotation(ArrayList<Quote> quotationList) {
+		String output = "";
+		
+		for (int i = 0; i < quotationList.size(); i++) {
+
+			output += String.format("%-10d %-10d %-25s %-25s %-10.2f %-10s %-10s %-10.2f\n",
+					
+					quotationList.get(i).getRequestID(),
+					quotationList.get(i).getQuotation_ID(),
+					quotationList.get(i).getRenovationCategory(),
+					quotationList.get(i).getDescriptionOfItem(),
+					quotationList.get(i).getItemPrice(),
+					quotationList.get(i).getDesignerName(),
+					quotationList.get(i).getStartDate(),
+					quotationList.get(i).getQuoteAmount());
+				
+		
+		}
+		return output;
+		
+	}
 
 		
 	public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
@@ -255,6 +281,24 @@ public class C206_CaseStudy {
 		return output;
 		
 	}
+	
+	public static String retrieveAllPackage(ArrayList<Package> packageList) {
+		String output = "";
+
+		for (int i = 0; i < packageList.size(); i++) {
+
+			output += String.format("%-15d %-15s %-10s %-10s %-10.2f\n", 
+					packageList.get(i).getCode(), 
+					packageList.get(i).getDescription(), 
+					packageList.get(i).getStart(), 
+					packageList.get(i).getEnd(), 
+					packageList.get(i).getAmount()); 
+		
+		}
+		return output;
+		
+	}
+	
 
 
 
@@ -343,9 +387,10 @@ public class C206_CaseStudy {
 			Helper.line(40, "-");
 		}
 		
-		private static void Register(ArrayList<User> accountList) 
-		{
-		// TODO Auto-generated method stub
+		public static User inputRegister() {
+			
+			User user = null;
+			
 			//adds user details to arraylist user
 			String regName = Helper.readString("Enter Your Name > ");
 			String regPassword = Helper.readString("Enter your Password details > ");
@@ -353,7 +398,20 @@ public class C206_CaseStudy {
 			String regStatus = "New";
 			String regRoles = "Customer";
 			System.out.println("Thank you for registering!");
-			accountList.add(new User (regName, regPassword, regEmail, regStatus, regRoles));
+			
+			user = new User(regName, regPassword, regEmail, regStatus, regRoles);
+			return user;
+			
+		}
+		
+		public static void registerAccount(ArrayList<User> accountList, User user) 
+		{
+		// TODO Auto-generated method stub
+		
+			
+			accountList.add(user);
+
+		
 		}
 		private static void ViewAcc(ArrayList<User> accountList)
 		{
@@ -396,15 +454,25 @@ public class C206_CaseStudy {
 			System.out.println(views);
 		}
 		
-		private static void addPackageInfo (ArrayList<Package> packageList) 
-		{
+		public static Package inputPackage() {
+			
+			Package p = null;
+			
 			int addPackageCode = Helper.readInt("Enter Package Code > ");
 			String addPackageDescription = Helper.readString("Enter Package Description > ");
 			String addPackageStart = Helper.readString("Enter Package Start Date> ");
 			String addPackageEnd = Helper.readString("Enter Package End Date > ");
 			double addPackageAmount = Helper.readDouble("Enter Package Amount > ");
 			
-			packageList.add(new Package (addPackageCode , addPackageDescription , addPackageStart , addPackageEnd , addPackageAmount));
+			p = new Package(addPackageCode , addPackageDescription , addPackageStart , addPackageEnd , addPackageAmount);
+			return p;
+			
+		}
+		
+		public static void addPackageInfo (ArrayList<Package> packageList, Package p) 
+		{
+
+			packageList.add(p);
 			System.out.println("Added successfully");
 		}
 		
