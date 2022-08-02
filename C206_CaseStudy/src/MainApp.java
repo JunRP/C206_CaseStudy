@@ -15,7 +15,7 @@ public class MainApp {
 		ArrayList<Quote> quotationList = new ArrayList <Quote>();
 
 		//Joshua
-		accountList.add(new User ("May", "May", "AdminLife123@gmail.com", "Confirmed", "Admin"));
+		accountList.add(new User ("Alice", "Alice", "AdminLife123@gmail.com", "Confirmed", "Admin"));
 		accountList.add(new User ("Bob", "Bob", "Bobbiedesigns12@gmail.com", "Confirmed", "Designer"));
 		accountList.add(new User ("Lament", "Lament", "LamentArtistic@gmail.com", "New", "Customer"));
 		
@@ -134,7 +134,7 @@ public class MainApp {
 				}
 				
 				//admin login
-				if(typeUser.equals(accountList.get(0).getName()) && typePassword.equals("May")) 
+				if(typeUser.equals(accountList.get(0).getName()) && typePassword.equals("Alice")) 
 				{
 					System.out.println("Login Successful, Welcome " + accountList.get(0).getName());
 					int custChoices= -1;

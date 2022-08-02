@@ -44,7 +44,7 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		
 		//User
-		user1 = (new User ("May", "89898989", "AdminLife123@gmail.com", "Confirmed", "Admin"));
+		user1 = (new User ("Alice", "89898989", "AdminLife123@gmail.com", "Confirmed", "Admin"));
 		user2 = (new User ("Bob", "98989898", "Bobbiedesigns12@gmail.com", "Confirmed", "Designer"));
 		user3 = (new User ("Lament", "68686868", "LamentArtistic@gmail.com", "New", "Customer"));
 		
