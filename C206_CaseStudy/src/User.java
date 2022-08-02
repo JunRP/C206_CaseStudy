@@ -2,15 +2,15 @@ public class User {
 	
 	
 	private String name;
-	private int contactNumber;
+	private String password;
 	private String emailAddress;
 	private String status;
 	private String role;
 	
-	public User(String name, int contactNumber, String emailAddress, String status, String role)
+	public User(String name, String password, String emailAddress, String status, String role)
 	{
 		this.name = name;
-		this.contactNumber = contactNumber;
+		this.password = password;
 		this.emailAddress = emailAddress;
 		this.status = status;
 		this.role = role;
@@ -24,12 +24,13 @@ public class User {
 		this.name = name;
 	}
 
-	public int getContactNumber() {
-		return contactNumber;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContactNumber(int contactNumber) {
-		this.contactNumber = contactNumber;
+	public void setPassword(String password) {
+		this.password = password;
+				
 	}
 
 	public String getEmailAddress() {
