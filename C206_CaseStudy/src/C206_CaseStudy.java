@@ -116,7 +116,6 @@ public class C206_CaseStudy {
 							 //Add Quotation -Martin
 							Quote quote= inputQuotation();
 							C206_CaseStudy.addQuotation(quotationList, quote);
-							System.out.println("quotation added");
 						}
 						else if(custChoices == 3)
 						{
@@ -256,7 +255,7 @@ public class C206_CaseStudy {
 		
 		for (int i = 0; i < quotationList.size(); i++) {
 
-			output += String.format("%-10d %-10d %-25s %-25s %-10.2f %-10s %-10s %-10.2f\n",
+			output += String.format("%-10d %-10d %-1s %-1s %-5.2f %-10s %-5s %-5.2f\n",
 					
 					quotationList.get(i).getRequestID(),
 					quotationList.get(i).getQuotation_ID(),
@@ -444,16 +443,19 @@ public class C206_CaseStudy {
 				if(accountList.get(i).getName().equals(ManageByUser)) 
 				{
 					accountList.get(i).setStatus("Confirmed");
+					System.out.println(accountList.get(i).getName() +"'s status have been changed to Confimed.");
 				}
 			}
 		}
 		//Joshua
 		private static void DeleteAcc(ArrayList<User> accountList)
-		{
+		{	
+			ViewAcc(accountList);
 			String deleteByName = Helper.readString("Enter Name to remove account > ");
 			for(int i = 0; i < accountList.size(); i++) {
 				if(accountList.get(i).getName().equals(deleteByName)) {
 					accountList.remove(i);
+					System.out.println(deleteByName +" have been deleted.");
 				}
 			}
 		}
@@ -489,7 +491,6 @@ public class C206_CaseStudy {
 		{
 
 			packageList.add(p);
-			System.out.println("Added successfully");
 		}
 		//Denise
 		private static void deletePackage (ArrayList<Package> packageList) 
@@ -513,7 +514,7 @@ public class C206_CaseStudy {
 	        }
 			if (checker == true) 
 			{
-				System.out.println("Deleted");
+				System.out.println(deletePackageCode +" has been deleted!");
 			}
 			else
 			{
@@ -531,7 +532,7 @@ public class C206_CaseStudy {
 				if(enterAddress.equals(appointmentList.get(i).getPremiseAddress()))
 				{
 					appointmentList.remove(i);
-					System.out.println("Deleted");
+					System.out.println("Appointment have been deleted!");
 					break;
 				}
 			}
@@ -557,7 +558,6 @@ public class C206_CaseStudy {
 		{
 
 					appointmentList.add(App);
-					System.out.println("Added successfully");
 			
 		}
 		//Martin
@@ -593,7 +593,7 @@ public class C206_CaseStudy {
 		{
 
 			quotationList.add(quote);
-			System.out.println("Added Successfully");
+			System.out.println("Quotation has been added Successfully.");
 			
 		}
 	//Martin
@@ -609,6 +609,7 @@ public class C206_CaseStudy {
 					if(temp2 == quotationList.get(i).getQuotation_ID())
 					{
 						quotationList.remove(i);
+						System.out.println("Quotation have been successfully deleted.");
 					}
 				}
 			}
