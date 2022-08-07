@@ -1,7 +1,30 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
+	private static final int USER_REGISTER_ACCOUNT = 2;
+	private static final int ADMIN_DELETE_PACAKGE = 9;
+	private static final int ADMIN_ADD_PACKAGE = 8;
+	private static final int ADMIN_VIEW_PACKAGE = 7;
+	private static final int ADMIN_DELETE_APPOINTMENT = 6;
+	private static final int ADMIN_VIEW_APPOINTMENT = 5;
+	private static final int ADMIN_ADD_APPOINTMENT = 4;
+	private static final int ADMIN_DELETE_ACCOUNT = 3;
+	private static final int ADMIN_VIEW_ACCOUNT = 2;
+	private static final int ADMIN_MANGE_USER_DETAILS = 1;
+	private static final int ADMIN_QUIT = 10;
+	private static final int DESIGNER_DELETE = 3;
+	private static final int DESIGNER_ADD_QUOTATION = 2;
+	private static final int DESIGNER_VIEW_QUOTATION = 1;
+	private static final int DESIGNER_QUIT = 4;
+	private static final int CUSTOMER_DELETE_APPOINTMENT = 4;
+	private static final int CUSTOMER_ADD_APPOINTMENT = 3;
+	private static final int CUSTOMER_VIEW_APPOINTMENT = 2;
+	private static final int CUSTOMER_VIEW_PACKAGE = 1;
+	private static final int CUSTOMER_QUIT = 5;
+	private static final int OPTION_LOGIN = 1;
+	private static final int OPTION_QUIT = 3;
 	public static String typeUser = "";
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -29,7 +52,6 @@ public class C206_CaseStudy {
 		appointmentList.add(new Appointment ("22/12/2022","11:59AM","Bob","Hougang Road 333","Lament"));
 		appointmentList.add(new Appointment ("5/1/2023","13:00PM","Bob","Jurong West St 55","Lament"));
 		appointmentList.add(new Appointment ("18/2/2023","10:30AM","Bob","Punggol Ave 7","Lament"));
-		
 		//Martin
 		quotationList.add(new Quote (1, 1 , "Kitchen", "Tiles", 2500, "Bob", "22/12/2023", 3000));
 		quotationList.add(new Quote (1 ,2 , "LivingRoom and Bedroom", "Tiles and Windows", 5000, "Bob", "13/2/2022", 6000));
@@ -37,13 +59,13 @@ public class C206_CaseStudy {
 		
 		
 		int option = -1;
-		while (option != 3) 
+		while (option != OPTION_QUIT) 
 		{
 			mainMenu();
 			
 			option = Helper.readInt("Enter choice > ");
 			//LOGINNNNNNNNNNNNNNNNN
-			if (option == 1) 
+			if (option == OPTION_LOGIN) 
 			{
 				//asking user to type name
 				typeUser = Helper.readString("Enter Name > ");
@@ -58,30 +80,30 @@ public class C206_CaseStudy {
 						
 						int custChoices= -1;
 						
-						while(custChoices != 5)
+						while(custChoices != CUSTOMER_QUIT)
 						{
 							customerMenu();
 							custChoices = Helper.readInt("Enter Choice > ");
-							if(custChoices == 1)
-							{   //view package - Denise
+							if(custChoices == CUSTOMER_VIEW_PACKAGE)
+							{   //view package -Denise
 								viewPackageInfo(packageList);
 							}
-							else if(custChoices == 2)
+							else if(custChoices == CUSTOMER_VIEW_APPOINTMENT)
 							{   //view appointment -Jun Han
 								viewAppointment(appointmentList);
 							}
-							else if(custChoices == 3)
-							{   //add appointment - Jun Han
+							else if(custChoices == CUSTOMER_ADD_APPOINTMENT)
+							{   //add appointment -Jun Han
 								Appointment App= inputAppointment();
 								C206_CaseStudy.addAppointment(appointmentList, App);
 								System.out.println("Appointment added");
 							}
-							else if(custChoices == 4)
+							else if(custChoices == CUSTOMER_DELETE_APPOINTMENT)
 							{
-								//delete appointment - Jun Han
+								//delete appointment -Jun Han
 								deleteAppointment(appointmentList);
 							}
-							else if(custChoices == 5)
+							else if(custChoices == CUSTOMER_QUIT)
 							{
 								System.out.println("Thank you for using Renovation ACE's services!");
 							}
@@ -96,33 +118,33 @@ public class C206_CaseStudy {
 				
 				
 				
-				//Designer Log in
+				//Designer Log in - Martin
 				if(typeUser.equals(accountList.get(1).getName()) && typePassword.equals("Bob"))
 				{
 					System.out.println("Login Successful, Welcome " + accountList.get(1).getName());
 					
 					int custChoices= -1;
-					while(custChoices != 4)
+					while(custChoices != DESIGNER_QUIT)
 					{
 						designerMenu();
 						custChoices = Helper.readInt("Enter Choice > ");
-						if(custChoices == 1)
+						if(custChoices == DESIGNER_VIEW_QUOTATION)
 						{
-							//View Quotation - Martin
+							//View Quotation
 							viewQuotation(quotationList);
 						}
-						else if(custChoices == 2)
+						else if(custChoices == DESIGNER_ADD_QUOTATION)
 						{
-							 //Add Quotation -Martin
+							 //Add Quotation
 							Quote quote= inputQuotation();
 							C206_CaseStudy.addQuotation(quotationList, quote);
 						}
-						else if(custChoices == 3)
+						else if(custChoices == DESIGNER_DELETE)
 						{
-							//Delete Quotation - Martin
+							//Delete Quotation
 							deleteQuotation(quotationList);
 						}
-						else if(custChoices == 4)
+						else if(custChoices == DESIGNER_QUIT)
 						{
 							System.out.println("Thank you for using Renovation ACE's services!");
 						}
@@ -139,60 +161,60 @@ public class C206_CaseStudy {
 				{
 					System.out.println("Login Successful, Welcome " + accountList.get(0).getName());
 					int custChoices= -1;
-					while(custChoices !=10)
+					while(custChoices !=ADMIN_QUIT)
 					{
 						adminMenu();
 						custChoices = Helper.readInt("Enter Choice > ");
-						if(custChoices == 1)
+						if(custChoices == ADMIN_MANGE_USER_DETAILS)
 						{
 							//Manage User Status - Joshua
 							ManageUserDetails(accountList);
 						}
-						else if(custChoices == 2)
+						else if(custChoices == ADMIN_VIEW_ACCOUNT)
 						{
 							//View User - Joshua
 							ViewAcc(accountList);
 						}
-						else if(custChoices == 3)
+						else if(custChoices == ADMIN_DELETE_ACCOUNT)
 						{
 							//Delete User - Joshua
 							DeleteAcc(accountList);
 						}
-						else if(custChoices == 4)
+						else if(custChoices == ADMIN_ADD_APPOINTMENT)
 						{
 							//Add Appointment - Jun Han
 							Appointment App= inputAppointment();
 							C206_CaseStudy.addAppointment(appointmentList, App);
 							System.out.println("Appointment added");
 						}
-						else if(custChoices == 5)
+						else if(custChoices == ADMIN_VIEW_APPOINTMENT)
 						{
 							//view appointment - Jun Han
 							viewAppointment(appointmentList);
 						}
-						else if(custChoices == 6)
+						else if(custChoices == ADMIN_DELETE_APPOINTMENT)
 						{
 							//delete appointment - Jun Han
 							deleteAppointment(appointmentList);
 						}
-						else if(custChoices == 7)
+						else if(custChoices == ADMIN_VIEW_PACKAGE)
 						{
 							//view package - Denise
 							viewPackageInfo(packageList);
 						}
-						else if(custChoices == 8)
+						else if(custChoices == ADMIN_ADD_PACKAGE)
 						{
 							//add package - Denise
 							Package p = inputPackage();
 							C206_CaseStudy.addPackageInfo(packageList, p);
 							System.out.println("Package added");
 						}
-						else if(custChoices == 9)
+						else if(custChoices == ADMIN_DELETE_PACAKGE)
 						{
 							//delete package -Denise
 							deletePackage (packageList);
 						}
-						else if(custChoices == 10)
+						else if(custChoices == ADMIN_QUIT)
 						{
 							System.out.println("Thank you for using Renovation ACE's services!");
 						}
@@ -212,15 +234,15 @@ public class C206_CaseStudy {
 			
 			
 			//REGISTERRRRRRRRRRRRRRRRRR
-			else if(option == 2) //- Joshua
+			else if(option == USER_REGISTER_ACCOUNT) //Joshua
 			{
-				User user = inputRegister(); 
+				User user = inputRegister();
 				C206_CaseStudy.registerAccount(accountList, user);
 				System.out.println("Registered!");
 			}
 			
 			//QUITSSSSSSSSSSSSSSSSSSSSSSSss
-			else if (option == 3) 
+			else if (option == OPTION_QUIT) 
 			{
 				System.out.println("Thank you for using Renovation ACE's services!");
 			} 
@@ -230,7 +252,6 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-	
 	//Joshua
 	public static String retrieveAllUser(ArrayList<User> accountList) {
 		String output = "";
@@ -249,13 +270,13 @@ public class C206_CaseStudy {
 		return output;
 		
 	}
-		//Martin
+	//Martin	
 	public static String retrieveAllQuotation(ArrayList<Quote> quotationList) {
 		String output = "";
 		
 		for (int i = 0; i < quotationList.size(); i++) {
 
-			output += String.format("%-10d %-10d %-1s %-1s %-5.2f %-10s %-5s %-5.2f\n",
+			output += String.format("%-10d %-10d %-25s %-25s %-10.2f %-10s %-10s %-10.2f\n",
 					
 					quotationList.get(i).getRequestID(),
 					quotationList.get(i).getQuotation_ID(),
@@ -272,7 +293,7 @@ public class C206_CaseStudy {
 		
 	}
 
-		//Jun Han
+	//Jun Han	
 	public static String retrieveAllAppointment(ArrayList<Appointment> appointmentList) {
 		String output = "";
 
@@ -288,6 +309,7 @@ public class C206_CaseStudy {
 		return output;
 		
 	}
+	
 	//Denise
 	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		String output = "";
@@ -350,8 +372,7 @@ public class C206_CaseStudy {
 			System.out.println("3. Quit ");
 			Helper.line(40, "-");
 		}
-		
-		//Jun Han
+	//JunHan	
 		private static void customerMenu()
 		{
 			//customers main menu
@@ -364,7 +385,6 @@ public class C206_CaseStudy {
 			System.out.println("5. Quit ");
 			Helper.line(40, "-");
 		}
-		
 		//Denise
 		private static void adminMenu()
 		{
@@ -383,8 +403,7 @@ public class C206_CaseStudy {
 			System.out.println("10. Quit ");
 			Helper.line(40, "-");
 		}
-		
-		//Martin
+		//martin
 		private static void designerMenu()
 		{
 			//Designer menu
@@ -396,7 +415,6 @@ public class C206_CaseStudy {
 			System.out.println("4. Quit ");
 			Helper.line(40, "-");
 		}
-		
 		//Joshua
 		public static User inputRegister() {
 			
@@ -414,7 +432,6 @@ public class C206_CaseStudy {
 			return user;
 			
 		}
-		
 		//Joshua
 		public static void registerAccount(ArrayList<User> accountList, User user) 
 		{
@@ -449,8 +466,7 @@ public class C206_CaseStudy {
 		}
 		//Joshua
 		private static void DeleteAcc(ArrayList<User> accountList)
-		{	
-			ViewAcc(accountList);
+		{
 			String deleteByName = Helper.readString("Enter Name to remove account > ");
 			for(int i = 0; i < accountList.size(); i++) {
 				if(accountList.get(i).getName().equals(deleteByName)) {
@@ -459,7 +475,6 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-		
 		//Denise
 		private static void viewPackageInfo(ArrayList<Package> packageList) 
 		{
@@ -491,6 +506,7 @@ public class C206_CaseStudy {
 		{
 
 			packageList.add(p);
+		
 		}
 		//Denise
 		private static void deletePackage (ArrayList<Package> packageList) 
@@ -520,8 +536,8 @@ public class C206_CaseStudy {
 			{
 				System.out.println("Package Code not found!");
 			}
-			
 		}
+		
 		//Jun Han
 		public static void deleteAppointment(ArrayList<Appointment> appointmentList)
 		{
@@ -537,6 +553,7 @@ public class C206_CaseStudy {
 				}
 			}
 		}
+		
 		//Jun Han
 		public static Appointment inputAppointment(){
 			
@@ -570,6 +587,7 @@ public class C206_CaseStudy {
 			}
 			System.out.println(views);
 		}
+		
 		//Martin
 		public static Quote inputQuotation() {
 			
@@ -596,7 +614,7 @@ public class C206_CaseStudy {
 			System.out.println("Quotation has been added Successfully.");
 			
 		}
-	//Martin
+	//martin
 		public static void deleteQuotation(ArrayList<Quote> quotationList)
 		{
 			viewQuotation(quotationList);
